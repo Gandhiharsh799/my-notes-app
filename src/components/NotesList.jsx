@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddNote from "./AddNote";
 import { useDispatch, useSelector } from "react-redux";
-import { noteActions } from "../store/note";
+import note, { noteActions } from "../store/note";
 
 export default function NotesList() {
   const notes = useSelector((state) => state.note.notes);
@@ -9,14 +9,26 @@ export default function NotesList() {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     id: null,
-    title: "",
-    content: "",
+    title: '',
+    content: '',
   });
 
   const handleAddNote = () => {
     setShowForm(true);
-    setFormData({ id: null, title: "", content: "" });
+    setFormData({ id: null, title: '', content: '' });
   };
+  const handleEditNote = (id)=>{
+    const noteEdit = notes.find((note)=>note.id === id)
+    if(noteEdit){
+      setShowForm(true);
+      setFormData({...noteEdit})
+    }
+
+  }
+  const handleDeleteNote = (id)=>{
+    if(window.confirm('Are you sure you want to delete the note?'))
+    dispatch(noteActions.deleteNote(id))
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,7 +44,7 @@ export default function NotesList() {
       dispatch(
         noteActions.addNote({
           title: formData.title,
-          content: formData.content,
+          content: formData.content
         })
       );
     }
@@ -67,11 +79,15 @@ export default function NotesList() {
         </form>
       )}
       {notes.map((note) => (
+        // <li key={note.id}><h3>{note.title}</h3>
+        // <p>{note.content}</p></li>
         <AddNote
           key={note.id}
           id={note.id}
           title={note.title}
           content={note.content}
+          onEdit={handleEditNote}
+          onDelete={handleDeleteNote}
         />
       ))}
     </div>
