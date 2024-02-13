@@ -3,7 +3,6 @@ import './Input.css'
 import { useDispatch } from 'react-redux';
 import { authActions } from '../store/auth';
 
-
 export default function Input({text}) {
     const dispatch = useDispatch();
     const handleLogin = (event)=>{
@@ -11,11 +10,10 @@ export default function Input({text}) {
 
         dispatch(authActions.login())
     }
-
   return (
     <>
       <div>
-        <h2 style={{ textAlign: "center" }}>{text}</h2>
+        <h2>{text}</h2>
       </div>
       <form onSubmit={handleLogin}>
         <div className="wrapper">

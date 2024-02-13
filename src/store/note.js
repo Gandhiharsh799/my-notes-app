@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-let nextId = 0 ;
 
 const initialState = {
     notes: []
@@ -11,7 +10,7 @@ const noteSlice = createSlice({
   reducers: {
     addNote: (state, action)=>{
         const { title,content} = action.payload
-        const id = ++nextId;
+        const id = Date.now()
         state.notes.push({id, title, content})
     },
     editNote: (state, action) => {

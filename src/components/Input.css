@@ -7,8 +7,10 @@
     border: 2px solid black;
     width: 50%;
     margin: auto;
-    padding: 10px;
-    
+    padding: 10px;   
+}
+h2{
+    text-align: center;
 }
 
 input{
@@ -16,11 +18,9 @@ input{
     height: 30px;
     margin: 1rem;
 }
-
 label{
     font-size: 18px;
 }
-
 .btn button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -32,7 +32,6 @@ label{
   cursor: pointer;
   font-family: inherit;
 }
-
 .btn{
     display: flex;
     flex-direction: row;
