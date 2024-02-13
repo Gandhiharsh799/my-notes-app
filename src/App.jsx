@@ -12,8 +12,6 @@ function App() {
   return (
     <>
     <Header/>
-    {/* {!isAuth &&<Login/>}
-    {isAuth && <NotesList/>} */}
     {isAuth ? <NotesList/> : <Login/>}
     </>
   )

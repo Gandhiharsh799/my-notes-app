@@ -6,7 +6,7 @@ export default function AddNote({ id, title, content, onEdit, onDelete }) {
   console.log(title);
   console.log(content);
   return (
-
+    
 
     <div className="card">
       <div className="container">
@@ -17,6 +17,7 @@ export default function AddNote({ id, title, content, onEdit, onDelete }) {
       <button onClick={() => onDelete(id)}>Delete</button>
       </div>
     </div>
+  
     
   );
 }

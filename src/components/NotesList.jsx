@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddNote from "./AddNote";
 import { useDispatch, useSelector } from "react-redux";
-import note, { noteActions } from "../store/note";
+import { noteActions } from "../store/note";
 
 export default function NotesList() {
   const notes = useSelector((state) => state.note.notes);
@@ -56,31 +56,38 @@ export default function NotesList() {
       <button onClick={handleAddNote}>Create a new Note</button>
       {showForm && (
         <form onSubmit={handleSubmit}>
+          <div className="form">
+
           <input
             type="text"
+            required
             placeholder="Title"
             value={formData.title}
             onChange={(event) =>
               setFormData({ ...formData, title: event.target.value })
             }
-          />
+            />
           <textarea
             placeholder="Content"
+            required
             value={formData.content}
             onChange={(event) =>
               setFormData({ ...formData, content: event.target.value })
             }
             cols="30"
             rows="10"
-          ></textarea>
+            ></textarea>
+            <div>
+
           <button type="submit">
             {formData.id ? "Edit Note" : "Add Note"}
           </button>
+            </div>
+            </div>
         </form>
       )}
+        <div className="card1">
       {notes.map((note) => (
-        // <li key={note.id}><h3>{note.title}</h3>
-        // <p>{note.content}</p></li>
         <AddNote
           key={note.id}
           id={note.id}
@@ -88,8 +95,9 @@ export default function NotesList() {
           content={note.content}
           onEdit={handleEditNote}
           onDelete={handleDeleteNote}
-        />
-      ))}
+          />
+          ))}
+          </div>
     </div>
   );
 }

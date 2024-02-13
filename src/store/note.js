@@ -14,21 +14,6 @@ const noteSlice = createSlice({
         const id = ++nextId;
         state.notes.push({id, title, content})
     },
-
-    // addNote: {
-    //   reducer(state, action) {
-    //     state.notes.push(action.payload);
-    //   },
-    //   prepare(note) {
-    //     return {
-    //       payload: {
-    //         id: nextId++,
-    //         title: note.title,
-    //         content: note.content,
-    //       },
-    //     };
-    //   },
-    // },
     editNote: (state, action) => {
       const { id, title, content } = action.payload;
       const existingNote = state.notes.find((note) => note.id === id);

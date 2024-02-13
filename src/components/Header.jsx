@@ -19,10 +19,7 @@ export default function Header() {
           <button onClick={handleClick}>Logout</button>
         </div>}
       </header>
-      {/* <section>
-        {login && <Login />}
-        {register && <Register />}
-      </section> */}
+      
     </>
   );
 }
